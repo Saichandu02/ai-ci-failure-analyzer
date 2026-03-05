@@ -12,7 +12,6 @@ _LEVEL_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("ERROR", re.compile(r"\b(error|exception|failed|failure|fatal)\b", re.IGNORECASE)),
     ("WARNING", re.compile(r"\b(warn(?:ing)?|deprecated)\b", re.IGNORECASE)),
     ("DEBUG", re.compile(r"\b(debug|trace)\b", re.IGNORECASE)),
-    ("INFO", re.compile(r"")),
 ]
 
 
@@ -56,7 +55,7 @@ class LogParser:
 
     def _detect_level(self, message: str) -> str:
         """Detect the log level from message content."""
-        for level, pattern in _LEVEL_PATTERNS[:-1]:
+        for level, pattern in _LEVEL_PATTERNS:
             if pattern.search(message):
                 return level
         return "INFO"
