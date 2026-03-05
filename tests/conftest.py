@@ -54,4 +54,4 @@ def sample_network_log() -> str:
 
 @pytest.fixture
 def sample_clean_log() -> str:
-    return "Step 1/3: Checkout\n" "Step 2/3: Install deps\n" "Step 3/3: Run tests\n" "All tests passed!\n"
+    return "Step 1/3: Checkout\n" + "Step 2/3: Install deps\n" + "Step 3/3: Run tests\n" + "All tests passed!\n"

@@ -102,7 +102,9 @@ def test_analyze_empty_log(analyzer: FailureAnalyzer) -> None:
 
 
 def test_one_result_per_category(analyzer: FailureAnalyzer) -> None:
-    log = "ModuleNotFoundError: No module named 'foo'\n" "Cannot find module 'bar'\n" "npm ERR! missing dependency\n"
+    log = (
+        "ModuleNotFoundError: No module named 'foo'\n" + "Cannot find module 'bar'\n" + "npm ERR! missing dependency\n"
+    )
     report = analyzer.analyze(log)
     categories = [r.category for r in report.results]
     assert len(categories) == len(set(categories)), "Duplicate categories found"
